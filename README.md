@@ -110,7 +110,7 @@ Same as lowDB, you can use the additional parameter in [setStorageLowDB and init
 
 [test_redis.js](https://github.com/hrishioa/sharded-interval-queue/blob/master/tests/test_redis.js) in the tests folder has an extended example of how to do this.
 
-### Custom Adapters
+## Custom Adapters
 
 Setting a custom adapter is not much more difficult. Each queue uses five **async** functions to interact with shared state, so you can write any implementation you'd like:
 
