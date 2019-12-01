@@ -1,4 +1,4 @@
-# Sharded Interval Queue
+# Sharded Interval Queue [![npm version](https://badge.fury.io/js/sharded-interval-queue.svg)](https://badge.fury.io/js/sharded-interval-queue)
 
 A no-dependencies, persistent store sharded queue that runs async functions in timed intervals while preserving ordering. A simpler single-process version is [Async Interval Queue](https://www.npmjs.com/package/async-interval-queue), which works in single-threaded environments. Run out of the box using the integrated global object for testing, then connect a persistent adapter of your choice. Integrated support for [LowDB](https://github.com/typicode/lowdb) (slower, but quick and easy persistence), or [Redis](https://github.com/NodeRedis/node_redis) for much faster and scalable persistent caching. Roll your own otherwise, it's pretty easy.
 
