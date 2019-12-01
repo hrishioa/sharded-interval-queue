@@ -39,11 +39,14 @@ class ShardedIntervalQueue {
   }
 
   setStorageCustom(initStorage, isSet, getAsync, setAsync, incrementAsync) {
-    this.initStorage = initStorage;
-    this.isSet = isSet;
-    this.getAsync = getAsync;
-    this.setAsync = setAsync;
-    this.increment = incrementAsync;
+    if(initStorage)
+      this.initStorage = initStorage;
+    else
+      this.initStorage = async () => null;
+    this.isSet = async (key) => isSet(this.queueName, key);
+    this.getAsync = async (key) => getAsync(this.queueName, key);
+    this.setAsync = async (key, value) => setAsync(this.queueName, key, value);
+    this.increment = async (key) => incrementAsync(this.queueName, key);
   }
 
   setStorageRedis(client) {

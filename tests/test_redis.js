@@ -31,7 +31,7 @@ async function testFunc() {
   let jobs = 20;
   for(let i=0; i<totalQueues; i++) {
     queues.push(new ShardedIntervalQueue("myQueue"));
-    await queues[queues.length-1].setStorageRedis(client);
+    queues[queues.length-1].setStorageRedis(client);
     await queues[queues.length-1].init(queueInterval, (i==0));
     runners.push(queues[queues.length-1].decorator(runner));
   }
