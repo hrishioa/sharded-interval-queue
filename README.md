@@ -34,14 +34,16 @@ async function job(value1, value2) {
 Next, we can enqueue them using a thunk or a decorator:
 
 ```javascript
+// Decorator
 let wrappedJob = queue1.decorator(job);
-
 wrappedJob("John","Me").then(console.log);
+
+// Thunk city
 queue2.add(() => job("Martha","Wayne")).then(console.log);
 ```
 
 The queue starts by default on a job being added. The second parameter to add can be set to true to prevent this.
-The queue will stop when there are no jobs left. You can restart it manually, or add a job without the doNotStart parameter.
+The queue will stop when there are no jobs left. You can restart it manually, or add a job without the [doNotStart parameter](#optional-parameters).
 
 You can also pause all queues from any queue instance:
 
