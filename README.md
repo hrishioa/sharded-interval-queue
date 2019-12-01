@@ -152,3 +152,7 @@ Each queue has the following functions and optional parameters:
 ## Possible issues
 
 Sharded Interval Queue is young and still needs work. Not much error handling or parameter checking is implemented, so any invalid states you push in may cause crashes. If this happens, please report the issues and I'll do my best to resolve them.
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
