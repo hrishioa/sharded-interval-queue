@@ -6,10 +6,7 @@
   "directories": {
     "test": "tests"
   },
-  "dependencies": {
-    "lowdb": "^1.0.0",
-    "redis": "^2.8.0"
-  },
+  "dependencies": {},
   "devDependencies": {},
   "scripts": {
     "test": "node tests/test.js"
