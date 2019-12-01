@@ -1,0 +1,36 @@
+{
+  "name": "sharded-interval-queue",
+  "version": "1.0.0",
+  "description": "Sharded queue for running async functions on an interval",
+  "main": "sharded-interval-queue.js",
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "lowdb": "^1.0.0",
+    "redis": "^2.8.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "node tests/test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hrishioa/sharded-interval-queue.git"
+  },
+  "keywords": [
+    "Sharding",
+    "Interval",
+    "Queue",
+    "Async",
+    "Scheduling",
+    "Rate",
+    "Limiting"
+  ],
+  "author": "Hrishi Olickel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hrishioa/sharded-interval-queue/issues"
+  },
+  "homepage": "https://github.com/hrishioa/sharded-interval-queue#readme"
+}
