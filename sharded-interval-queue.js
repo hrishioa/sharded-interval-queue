@@ -137,18 +137,18 @@ class ShardedIntervalQueue {
               });
               thisQueue.runNext()();
             });
-          }
-
-          if(currentIndex < thisQueue.queue.length) {
-            thisQueue.job = setTimeout(
-              thisQueue.runNext(),
-              (thisQueue.queue[currentIndex].queueNo-current-1)*interval);
           } else {
-            thisQueue.job = null;
+            if(currentIndex < thisQueue.queue.length) {
+              thisQueue.job = setTimeout(
+                thisQueue.runNext(),
+                (thisQueue.queue[currentIndex].queueNo-current-1)*interval);
+            } else {
+              thisQueue.job = null;
+            }
+            thisQueue.setAsync('current', thisQueue.queue[currentIndex-1].queueNo).then(() => {
+              thisQueue.queue[currentIndex-1].task();
+            });
           }
-          thisQueue.setAsync('current', thisQueue.queue[currentIndex-1].queueNo).then(() => {
-            thisQueue.queue[currentIndex-1].task();
-          });
         });
     }
   }

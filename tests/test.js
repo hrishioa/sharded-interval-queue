@@ -1,4 +1,4 @@
-const ShardedIntervalQueue = require('./sharded-interval-queue');
+const ShardedIntervalQueue = require('../sharded-interval-queue');
 
 let inputQueue = [];
 let doneQueue = [];

@@ -1,4 +1,4 @@
-const ShardedIntervalQueue = require('./sharded-interval-queue');
+const ShardedIntervalQueue = require('../sharded-interval-queue');
 const low = require('lowdb');
 const FileAsync = require('lowdb/adapters/FileAsync');
 let adapter;
