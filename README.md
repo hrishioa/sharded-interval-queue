@@ -2,7 +2,9 @@
 
 A no-dependencies, persistent store sharded queue that runs async functions in timed intervals while preserving ordering. A simpler single-process version is [Async Interval Queue](https://www.npmjs.com/package/async-interval-queue), which works in single-threaded environments. Run out of the box using the integrated global object for testing, then connect a persistent adapter of your choice. Integrated support for [LowDB](https://github.com/typicode/lowdb) (slower, but quick and easy persistence), or [Redis](https://github.com/NodeRedis/node_redis) for much faster and scalable persistent caching. Roll your own otherwise, it's pretty easy.
 
-Integrated decorator to wrap your functions. Comes with some tests for global object, lowdb and redis adapters to test your implementation.
+Includes a decorator to wrap your functions. Comes with some tests for global object, lowdb and redis adapters to test your implementation.
+
+If you'd like to understand how the sharding works (and help me improve it), have a look at [the theory](https://hrishioa.github.io/sharding-the-interval-queue-theory/).
 
 ## Installation
 
