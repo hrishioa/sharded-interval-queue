@@ -16,7 +16,7 @@ npm install sharded-interval-queue
 
 ### Out-of-the-box
 
-> This is only for using multiple connected queues within the same namespace. For other options, look at the [LowDB](#lowdb), [Redis](#redis) implementations or [Roll your own](#custom-adapters).
+> This example is only for using multiple connected queues within the same namespace. For other options, look at the [LowDB](#lowdb), [Redis](#redis) implementation examples or [Roll your own](#custom-adapters).
 
 Let's create two new connected queues and an async job:
 

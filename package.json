@@ -1,6 +1,6 @@
 {
   "name": "sharded-interval-queue",
-  "version": "1.0.9",
+  "version": "1.0.11",
   "description": "Sharded queue for running async functions on an interval",
   "main": "sharded-interval-queue.js",
   "directories": {
@@ -29,5 +29,5 @@
   "bugs": {
     "url": "https://github.com/hrishioa/sharded-interval-queue/issues"
   },
-  "homepage": "https://github.com/hrishioa/sharded-interval-queue#readme"
+  "homepage": "https://hrishioa.github.io/sharding-the-interval-queue-theory/"
 }
