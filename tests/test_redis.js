@@ -21,7 +21,7 @@ function timeout(ms) {
 }
 
 async function testFunc() {
-  let totalQueues = 5;
+  let totalQueues = 1;
   let queues = [];
   let runners = [];
   let waitMaxMs = 1;

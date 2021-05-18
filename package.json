@@ -1,7 +1,7 @@
 {
   "name": "sharded-interval-queue",
-  "version": "1.0.9",
-  "description": "Sharded queue for running async functions on an interval",
+  "version": "2.0.00",
+  "description": "Sharded queue with job limit for running async functions on an interval",
   "main": "sharded-interval-queue.js",
   "directories": {
     "test": "tests"

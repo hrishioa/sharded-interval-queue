@@ -6,6 +6,8 @@ Includes a decorator to wrap your functions. Comes with some tests for global ob
 
 If you'd like to understand how the sharding works (and help me improve it), have a look at [the theory](https://hrishioa.github.io/sharding-the-interval-queue-theory/).
 
+V2 is released! Now includes job limits, where you can set a maximum number of running jobs across all shards of the queue. `incrementAsync` and `decrementAsync` are also now optional when setting a custom storage adapter.
+
 ## Installation
 
 ```bash
@@ -122,7 +124,8 @@ Setting a custom adapter is not much more difficult. Each queue uses five **asyn
 * `isSet(queueName, key)` - called with a queue name and a key, must return true if the key is set, and false otherwise.
 * `setAsync(queueName, key, value)` - called with a queue name, key and a value, must set this key to storage.
 * `getAsync(queueName, key)` - called with a queue name and a key, must return the valye of the key.
-* `incrementAsync(queueName, key)`- called with a queue name and key, must increment and return the *incremented* value (ideally atomic).
+* `incrementAsync(queueName, key)`- (Optional) called with a queue name and key, must increment and return the *incremented* value (ideally atomic).
+* `decrementAsync(queueName, key)`- (Optional) called with a queue name and key, must decrement and return the *decremented* value (ideally atomic).
 
 You can then set the functions using `setStorageCustom`. Here's a (bad) example:
 
@@ -136,12 +139,31 @@ let myStorage = {};
 isSet = async (queueName, key) => ((queueName+key) in myStorage);
 setAsync = async (queueName, key, value) => myStorage[queueName+key] = value;
 getAsync = async (queueName, key) => myStorage[queueName+key];
-incrementAsync = async (queueName, key) => { myStorage[queueName+key]++; return myStorage[queueName+key]; }
+incrementAsync = async (queueName, key) => { 
+    myStorage[queueName+key]++; return myStorage[queueName+key]; 
+}
+decrementAsync = async (queueName, key) => { 
+    myStorage[queueName+key]--; return myStorage[queueName+key]; 
+}
 
-localQueue.setStorageCustom(null, isSet, getAsync, setAsync, incrementAsync);
+localQueue.setStorageCustom(null, isSet, getAsync, setAsync, decrementAsync);
 ```
 
 Once done, `init` your queue and carry on! Please feel free to submit a pull request to add more adapters if you'd like.
+
+## Maximum Job limit
+
+A maximum job limit can be set during initialization. `init` takes a fifth argument `maxJobs`. This is a total limit of running jobs that will be respected across all shards. 
+
+Here's an example for a queue with a limit of 10 concurrent jobs:
+
+```javascript
+await redisQueue.init(1000, false, null, 10);
+```
+
+
+
+Note: Due to the nature of scheduling, you can expect the maximum to slip up to `maxJobs+<number of queues>` for really small intervals (close to 1 ms).
 
 ## Optional parameters
 
@@ -156,6 +178,10 @@ Each queue has the following functions and optional parameters:
 ## Possible issues
 
 Sharded Interval Queue is young and still needs work. Not much error handling or parameter checking is implemented, so any invalid states you push in may cause crashes. If this happens, please report the issues and I'll do my best to resolve them.
+
+
+
+The test files included allow for testing the included storage adapters to measure failure points, and *drift* (how far off expected execution spot is a task actually run). These tests could use **a lot** of work!
 
 ## License
 
